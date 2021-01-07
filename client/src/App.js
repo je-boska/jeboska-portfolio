@@ -11,11 +11,14 @@ const App = () => {
   }, [])
 
   return (
-    <div>
-      {projects.map(project => (
-        <Project project={project} />
-      ))}
-    </div>
+    <>
+      <div>
+        {projects.map(project => (
+          <Project project={project} />
+        ))}
+      </div>
+      <div style={{ height: '200vh' }}></div>
+    </>
   )
 }
 

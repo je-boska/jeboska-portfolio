@@ -58,8 +58,10 @@ const Project = ({ project }) => {
 
   return (
     <div className='project'>
-      <h2>{title}</h2>
-      <BlockContent blocks={body} />
+      <div className='project-text'>
+        <h2>{title}</h2>
+        <BlockContent blocks={body} />
+      </div>
       <div
         className='video-container'
         onClick={() => {
@@ -80,7 +82,6 @@ const Project = ({ project }) => {
           muted={muted}
         />
       </div>
-      <div style={{ height: '200vh' }}></div>
     </div>
   )
 }
