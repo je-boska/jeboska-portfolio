@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import Project from './components/Project'
+import Project from './components/Project/Project'
 import { getProjects } from './queries/projectQueries'
 
 const App = () => {
