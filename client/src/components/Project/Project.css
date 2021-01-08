@@ -5,15 +5,31 @@
 .project-text {
   width: 50%;
   padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.project-text h2 {
+.project-text h1 {
+  font-family: karrik;
+  font-size: 5rem;
   padding-bottom: 20px;
+}
+
+.project-text p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  opacity: 0.8;
 }
 
 .video-container {
   width: 50%;
+  height: 100vh;
   position: relative;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .mute-indicator {

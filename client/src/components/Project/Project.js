@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import './Project.css'
+import { splitScroll } from '../../effects/splitScroll'
 
 const Project = ({ project }) => {
   const [playing, setPlaying] = useState(false)
@@ -56,11 +57,17 @@ const Project = ({ project }) => {
     })
   })
 
+  useEffect(() => {
+    splitScroll()
+  }, [])
+
   return (
     <div className='project'>
       <div className='project-text'>
-        <h2>{title}</h2>
-        <BlockContent blocks={body} />
+        <div>
+          <h1>{title}</h1>
+          <BlockContent blocks={body} />
+        </div>
       </div>
       <div
         className='video-container'
@@ -75,12 +82,7 @@ const Project = ({ project }) => {
           }}>
           <i style={{ fontSize: 60 }} className='fas fa-volume-mute'></i>
         </div>
-        <video
-          style={{ width: '100%' }}
-          className='video'
-          src={videoUrl}
-          muted={muted}
-        />
+        <video className='video' src={videoUrl} muted={muted} loop />
       </div>
     </div>
   )
