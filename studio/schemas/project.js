@@ -29,6 +29,14 @@ export default {
       type: 'file',
     },
     {
+      name: 'poster',
+      title: 'Poster',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',

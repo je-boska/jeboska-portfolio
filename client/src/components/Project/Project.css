@@ -1,11 +1,14 @@
 .project {
   display: flex;
+  flex-wrap: nowrap;
+  height: 200vh;
 }
 
 .project-text {
   width: 50%;
   padding: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -16,6 +19,7 @@
 }
 
 .project-text p {
+  max-width: 500px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   opacity: 0.8;
 }
@@ -24,6 +28,7 @@
   width: 50%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .video-container video {
@@ -32,7 +37,7 @@
   object-fit: cover;
 }
 
-.mute-indicator {
+.play-indicator {
   opacity: 0;
   color: white;
   position: absolute;

@@ -5,61 +5,33 @@ import { splitScroll } from '../../effects/splitScroll'
 
 const Project = ({ project }) => {
   const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(true)
   const [hoverVideo, setHoverVideo] = useState(false)
 
-  const { title, body, videoUrl } = project
+  const { title, slug, body, videoUrl, poster } = project
 
   const play = () => {
-    document.querySelector('.video').play()
+    document.querySelector(`.${slug}_video`).play()
   }
 
   const pause = () => {
-    if (playing) {
-      document.querySelector('.video').pause()
-      setPlaying(false)
-    }
-  }
-
-  const pauseIfScrolledPast = videoContainer => {
-    if (
-      window.scrollY >
-      videoContainer.offsetHeight + videoContainer.offsetTop
-    ) {
-      pause()
-    }
-  }
-
-  const toggleMute = () => {
-    setMuted(!muted)
+    document.querySelector(`.${slug}_video`).pause()
   }
 
   useEffect(() => {
-    playing && play()
-    const videoContainer = document.querySelector('.video-container')
+    playing ? play() : pause()
 
-    videoContainer.addEventListener('mouseover', () => {
-      setPlaying(true)
+    const videoContainer = document.querySelector(`.${slug}_video-container`)
+    videoContainer.addEventListener('mouseenter', () => {
       setHoverVideo(true)
     })
-
     videoContainer.addEventListener('mouseleave', () => {
-      setPlaying(false)
       setHoverVideo(false)
-    })
-
-    document.addEventListener('scroll', () => {
-      pauseIfScrolledPast(videoContainer)
-    })
-
-    return document.removeEventListener('scroll', () => {
-      pauseIfScrolledPast(videoContainer)
     })
   })
 
   useEffect(() => {
-    splitScroll()
-  }, [])
+    splitScroll(slug)
+  }, [slug])
 
   return (
     <div className='project'>
@@ -70,19 +42,24 @@ const Project = ({ project }) => {
         </div>
       </div>
       <div
-        className='video-container'
+        className={`${slug}_video-container video-container`}
         onClick={() => {
-          play()
-          playing && toggleMute()
+          setPlaying(!playing)
         }}>
         <div
-          className='mute-indicator'
+          className='play-indicator'
           style={{
-            opacity: `${muted && hoverVideo ? 0.5 : 0}`,
+            opacity: `${hoverVideo ? 0.5 : 0}`,
           }}>
-          <i style={{ fontSize: 60 }} className='fas fa-volume-mute'></i>
+          <i
+            style={{ fontSize: 60 }}
+            className={!playing ? 'fas fa-play' : 'fas fa-pause'}></i>
         </div>
-        <video className='video' src={videoUrl} muted={muted} loop />
+        <video
+          className={`${slug}_video video`}
+          src={videoUrl}
+          poster={poster}
+        />
       </div>
     </div>
   )

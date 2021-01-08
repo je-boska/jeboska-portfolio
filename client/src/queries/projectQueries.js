@@ -6,8 +6,10 @@ export const getProjects = async () => {
     groq`*[_type == "project"] {
       _id,
       title,
+      "slug": slug.current,
       body,
-      "videoUrl": video.asset->url
+      "videoUrl": video.asset->url,
+      "poster": poster.asset->url,
     }
     `
   )

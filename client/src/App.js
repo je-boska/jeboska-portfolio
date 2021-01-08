@@ -19,13 +19,20 @@ const App = () => {
 
   return (
     <>
-      <div style={{ height: '200vh' }}></div>
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <h1>JE Boska</h1>
+      </div>
       <div>
         {projects.map(project => (
           <Project key={project._id} project={project} />
         ))}
       </div>
-      <div style={{ height: '200vh' }}></div>
     </>
   )
 }
