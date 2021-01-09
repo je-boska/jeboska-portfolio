@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import BlockContent from '@sanity/block-content-to-react'
-import { splitScroll } from '../../effects/splitScroll'
-import { ProjectType } from '../../types'
+import { splitScroll } from '../effects/splitScroll'
+import { ProjectType } from '../types'
 import { Box, Flex, Heading } from '@chakra-ui/react'
-import PlayButton from '../PlayButton/PlayButton'
+import PlayButton from './PlayButton'
 
 interface ProjectProps {
   project: ProjectType

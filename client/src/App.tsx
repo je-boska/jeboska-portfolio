@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Header from './components/Header/Header'
-import Project from './components/Project/Project'
+import Header from './components/Header'
+import Project from './components/Project'
 import { fadeIn } from './effects/fadeIn'
 import { getProjects } from './queries/projectQueries'
 import { ProjectType } from './types'
