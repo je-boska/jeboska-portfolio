@@ -1,6 +1,6 @@
 import ScrollMagic from 'scrollmagic'
 
-export const splitScroll = slug => {
+export const splitScroll = (slug: string) => {
   const controller = new ScrollMagic.Controller()
 
   new ScrollMagic.Scene({
