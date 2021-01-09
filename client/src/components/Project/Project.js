@@ -10,6 +10,7 @@ const Project = ({ project }) => {
   const { title, slug, body, videoUrl, poster } = project
 
   const play = () => {
+    document.querySelectorAll('.video').forEach(video => video.pause())
     document.querySelector(`.${slug}_video`).play()
   }
 
@@ -45,15 +46,18 @@ const Project = ({ project }) => {
         className={`${slug}_video-container video-container`}
         onClick={() => {
           setPlaying(!playing)
-        }}>
+        }}
+      >
         <div
           className='play-indicator'
           style={{
             opacity: `${hoverVideo ? 0.5 : 0}`,
-          }}>
+          }}
+        >
           <i
             style={{ fontSize: 60 }}
-            className={!playing ? 'fas fa-play' : 'fas fa-pause'}></i>
+            className={!playing ? 'fas fa-play' : 'fas fa-pause'}
+          ></i>
         </div>
         <video
           className={`${slug}_video video`}

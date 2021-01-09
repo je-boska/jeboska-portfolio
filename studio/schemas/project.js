@@ -32,9 +32,6 @@ export default {
       name: 'poster',
       title: 'Poster',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
     },
     {
       name: 'body',
@@ -47,7 +44,7 @@ export default {
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage',
+      media: 'poster',
     },
     prepare(selection) {
       const { author } = selection
