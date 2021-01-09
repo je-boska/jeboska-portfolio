@@ -1,16 +1,15 @@
 import React from 'react'
 
 interface PlayButtonProps {
-  hoverVideo: boolean
   playing: boolean
 }
 
-const PlayButton: React.FC<PlayButtonProps> = ({ hoverVideo, playing }) => {
+const PlayButton: React.FC<PlayButtonProps> = ({ playing }) => {
   return (
     <div
       className='play-button'
       style={{
-        opacity: `${hoverVideo ? 0.5 : 0}`,
+        opacity: playing ? 0 : 0.5,
         color: 'white',
         position: 'absolute',
         top: '50%',
@@ -19,10 +18,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ hoverVideo, playing }) => {
         transition: '0.4s opacity ease-in-out',
       }}
     >
-      <i
-        style={{ fontSize: 60 }}
-        className={!playing ? 'fas fa-play' : 'fas fa-pause'}
-      ></i>
+      <i style={{ fontSize: 60 }} className='fas fa-play'></i>
     </div>
   )
 }

@@ -11,7 +11,6 @@ interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
   const [playing, setPlaying] = useState(false)
-  const [hoverVideo, setHoverVideo] = useState(false)
 
   const { title, slug, body, videoUrl, poster } = project
 
@@ -35,13 +34,11 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
   useEffect(() => {
     playing ? play() : pause()
-
-    const videoContainer = document.querySelector(`.${slug}_video-container`)!
-    videoContainer.addEventListener('mouseenter', () => {
-      setHoverVideo(true)
-    })
-    videoContainer.addEventListener('mouseleave', () => {
-      setHoverVideo(false)
+    const video: HTMLVideoElement = document.querySelector(
+      `.${slug}_video`
+    )! as HTMLVideoElement
+    document.addEventListener('scroll', () => {
+      video.paused && setPlaying(false)
     })
   })
 
@@ -68,12 +65,15 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         overflow='hidden'
         height='100vh'
         width='50%'
+        _hover={{
+          cursor: 'pointer',
+        }}
         className={`${slug}_video-container video-container`}
         onClick={() => {
           setPlaying(!playing)
         }}
       >
-        <PlayButton hoverVideo={hoverVideo} playing={playing} />
+        <PlayButton playing={playing} />
         <video
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className={`${slug}_video video`}
