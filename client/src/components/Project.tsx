@@ -13,6 +13,7 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = ({ project }) => {
   const [isLargerThan500] = useMediaQuery('(min-width: 500px)')
 
+  const [hoverVideo, setHoverVideo] = useState(false)
   const [playing, setPlaying] = useState(false)
 
   const { title, slug, body, videoUrl, poster } = project
@@ -31,24 +32,35 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     video.pause()
   }
 
+  const toggleFullscreen = () => {
+    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
+    if (video.requestFullscreen) {
+      video.requestFullscreen()
+    }
+  }
+
   useEffect(() => {
     playing ? play() : pause()
     const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
     document.addEventListener('scroll', () => {
       video.paused && setPlaying(false)
     })
+    video.addEventListener('ended', () => {
+      setPlaying(false)
+    })
+
+    video.addEventListener('mouseover', () => {
+      setHoverVideo(true)
+    })
+
+    video.addEventListener('mouseleave', () => {
+      setHoverVideo(false)
+    })
   })
 
   useEffect(() => {
     isLargerThan500 && splitScroll(`.${slug}_video-container`)
   }, [slug, isLargerThan500])
-
-  function toggleFullscreen() {
-    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
-    if (video.requestFullscreen) {
-      video.requestFullscreen()
-    }
-  }
 
   return (
     <Flex flexWrap={isLargerThan500 ? 'nowrap' : 'wrap'} height='200vh'>
@@ -75,6 +87,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         {isLargerThan500 && (
           <FullscreenButton
             playing={playing}
+            hoverVideo={hoverVideo}
             toggleFullscreen={toggleFullscreen}
           />
         )}
