@@ -1,13 +1,13 @@
 import ScrollMagic from 'scrollmagic'
 
-export const splitScroll = (slug: string) => {
+export const splitScroll = (element: string) => {
   const controller = new ScrollMagic.Controller()
 
   new ScrollMagic.Scene({
     duration: '100%',
-    triggerElement: `.${slug}_video-container`,
+    triggerElement: element,
     triggerHook: 0,
   })
-    .setPin(`.${slug}_video-container`)
+    .setPin(element)
     .addTo(controller)
 }

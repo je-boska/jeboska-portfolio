@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import BlockContent from '@sanity/block-content-to-react'
 import { splitScroll } from '../effects/splitScroll'
 import { ProjectType } from '../types'
 import { Box, Flex, Heading } from '@chakra-ui/react'
 import PlayButton from './PlayButton'
+import ProjectText from './ProjectText'
 
 interface ProjectProps {
   project: ProjectType
@@ -15,35 +15,29 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   const { title, slug, body, videoUrl, poster } = project
 
   const play = () => {
-    const videos: NodeListOf<HTMLVideoElement> = document.querySelectorAll(
+    const videos = document.querySelectorAll(
       '.video'
     )! as NodeListOf<HTMLVideoElement>
     videos.forEach(video => video.pause())
-    const video: HTMLVideoElement = document.querySelector(
-      `.${slug}_video`
-    )! as HTMLVideoElement
+    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
     video.play()
   }
 
   const pause = () => {
-    const video: HTMLVideoElement = document.querySelector(
-      `.${slug}_video`
-    )! as HTMLVideoElement
+    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
     video.pause()
   }
 
   useEffect(() => {
     playing ? play() : pause()
-    const video: HTMLVideoElement = document.querySelector(
-      `.${slug}_video`
-    )! as HTMLVideoElement
+    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
     document.addEventListener('scroll', () => {
       video.paused && setPlaying(false)
     })
   })
 
   useEffect(() => {
-    splitScroll(slug)
+    splitScroll(`.${slug}_video-container`)
   }, [slug])
 
   return (
@@ -55,10 +49,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         justify='center'
         align='center'
       >
-        <Box className='to-fade' opacity='0' transition='0.4s opacity linear'>
-          <Heading size='xl'>{title}</Heading>
-          <BlockContent blocks={body} />
-        </Box>
+        <ProjectText title={title} body={body} />
       </Flex>
       <Box
         position='relative'

@@ -1,4 +1,4 @@
-export interface ProjectType {
+export type ProjectType = {
   _id: number
   title: string
   slug: string
