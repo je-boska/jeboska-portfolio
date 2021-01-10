@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { splitScroll } from '../effects/splitScroll'
 import { ProjectType } from '../types'
-import { Box, Flex, Heading } from '@chakra-ui/react'
+import { Box, Flex, useMediaQuery } from '@chakra-ui/react'
 import PlayButton from './PlayButton'
 import ProjectText from './ProjectText'
+import FullscreenButton from './FullscreenButton'
 
 interface ProjectProps {
   project: ProjectType
 }
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
+  const [isLargerThan500] = useMediaQuery('(min-width: 500px)')
+
   const [playing, setPlaying] = useState(false)
 
   const { title, slug, body, videoUrl, poster } = project
@@ -37,13 +40,20 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   })
 
   useEffect(() => {
-    splitScroll(`.${slug}_video-container`)
-  }, [slug])
+    isLargerThan500 && splitScroll(`.${slug}_video-container`)
+  }, [slug, isLargerThan500])
+
+  function toggleFullscreen() {
+    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
+    if (video.requestFullscreen) {
+      video.requestFullscreen()
+    }
+  }
 
   return (
-    <Flex flexWrap='nowrap' height='200vh'>
+    <Flex flexWrap={isLargerThan500 ? 'nowrap' : 'wrap'} height='200vh'>
       <Flex
-        width='50%'
+        width={isLargerThan500 ? '50%' : '100%'}
         padding={20}
         display='flex'
         justify='center'
@@ -52,24 +62,30 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         <ProjectText title={title} body={body} />
       </Flex>
       <Box
+        width={isLargerThan500 ? '50%' : '100%'}
         position='relative'
         overflow='hidden'
         height='100vh'
-        width='50%'
+        className={`${slug}_video-container video-container`}
         _hover={{
           cursor: 'pointer',
         }}
-        className={`${slug}_video-container video-container`}
-        onClick={() => {
-          setPlaying(!playing)
-        }}
       >
         <PlayButton playing={playing} />
+        {isLargerThan500 && (
+          <FullscreenButton
+            playing={playing}
+            toggleFullscreen={toggleFullscreen}
+          />
+        )}
         <video
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className={`${slug}_video video`}
           src={videoUrl}
           poster={poster}
+          onClick={() => {
+            setPlaying(!playing)
+          }}
         />
       </Box>
     </Flex>
