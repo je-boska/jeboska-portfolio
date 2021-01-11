@@ -7,10 +7,10 @@ const makeElementInvisible = (element: HTMLElement): void => {
 
 const checkPosition = (element: HTMLElement, windowHeight: number) => {
   let positionFromTop = element.getBoundingClientRect().top
-  if (positionFromTop - windowHeight + 100 <= 0) {
+  if (positionFromTop - windowHeight <= 0) {
     makeElementVisible(element)
   }
-  if (positionFromTop - 100 <= 0 || positionFromTop - windowHeight + 100 >= 0) {
+  if (positionFromTop <= 0 || positionFromTop - windowHeight >= 0) {
     makeElementInvisible(element)
   }
 }

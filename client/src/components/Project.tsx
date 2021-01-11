@@ -15,7 +15,6 @@ type videoElement = HTMLVideoElement | null
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
-
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFirefox, setIsFirefox] = useState(false)
   const [video, setVideo] = useState<videoElement>(null)
@@ -60,22 +59,20 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   })
 
   useEffect(() => {
-    isLargerThan650 && splitScroll(`.${slug}_video-container`)
+    splitScroll(`.${slug}_video-container`, isLargerThan650)
   }, [slug, isLargerThan650])
 
   return (
     <Flex
+      className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
       height={isLargerThan650 ? '200vh' : ''}>
-      <Flex
-        width={isLargerThan650 ? '50%' : '100%'}
-        padding={10}
-        paddingTop={isLargerThan650 ? '' : '150px'}
-        display='flex'
-        justify='center'
-        align='center'>
-        <ProjectText title={title} body={body} />
-      </Flex>
+      <ProjectText
+        title={title}
+        body={body}
+        isLargerThan650={isLargerThan650}
+      />
+
       <Box
         width={isLargerThan650 ? '50%' : '100%'}
         position='relative'

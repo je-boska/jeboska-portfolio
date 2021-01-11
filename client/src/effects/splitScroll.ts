@@ -1,13 +1,14 @@
-import ScrollMagic from 'scrollmagic'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
-export const splitScroll = (element: string) => {
-  const controller = new ScrollMagic.Controller()
-
-  new ScrollMagic.Scene({
-    duration: '100%',
-    triggerElement: element,
-    triggerHook: 0,
-  })
-    .setPin(element)
-    .addTo(controller)
+export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
+  if (isLargerThan650) {
+    gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.create({
+      trigger: pinElement,
+      start: 'top top',
+      end: '100%',
+      pin: true,
+    })
+  }
 }
