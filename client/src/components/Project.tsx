@@ -66,10 +66,13 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   }, [slug, isLargerThan650])
 
   return (
-    <Flex flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'} height='200vh'>
+    <Flex
+      flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
+      height={isLargerThan650 ? '200vh' : ''}>
       <Flex
         width={isLargerThan650 ? '50%' : '100%'}
         padding={10}
+        paddingTop={isLargerThan650 ? '' : '150px'}
         display='flex'
         justify='center'
         align='center'>
