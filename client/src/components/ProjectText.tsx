@@ -8,7 +8,7 @@ interface ProjectTextProps {
 }
 
 const css = `
-.title {
+.project-text h1 {
     padding-bottom: 40px;
     line-height: 1;
 }
@@ -33,9 +33,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({ title, body }) => {
         className='project-text to-fade'
         opacity='0'
         transition='0.4s opacity linear'>
-        <Heading
-          className='title'
-          fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
+        <Heading as='h1' fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
           {title}
         </Heading>
         <BlockContent blocks={body} />

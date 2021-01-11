@@ -10,45 +10,66 @@ interface ProjectProps {
   project: ProjectType
 }
 
+type videoElement = HTMLVideoElement | null
+
 const Project: React.FC<ProjectProps> = ({ project }) => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
 
-  const [playing, setPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isFirefox, setIsFirefox] = useState(false)
+  const [video, setVideo] = useState<videoElement>(null)
 
   const { title, slug, body, videoUrl, poster } = project
 
-  const play = () => {
+  function play() {
+    pauseAll()
+    video?.play()
+  }
+
+  function pause() {
+    video?.pause()
+  }
+
+  function pauseAll() {
     const videos = document.querySelectorAll(
       '.video'
     )! as NodeListOf<HTMLVideoElement>
     videos.forEach(video => video.pause())
-    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
-    video.play()
   }
 
-  const pause = () => {
-    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
-    video.pause()
+  function toggleFullscreen() {
+    if (video && video.requestFullscreen) {
+      video.requestFullscreen()
+    }
+  }
+
+  function checkIfFirefox() {
+    let userAgentString = navigator.userAgent
+    let firefoxAgent = userAgentString.indexOf('Firefox') > -1
+    console.log('checked')
+    setIsFirefox(firefoxAgent)
   }
 
   useEffect(() => {
-    playing ? play() : pause()
-    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
+    setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
+  }, [slug])
+
+  useEffect(() => {
+    checkIfFirefox()
+  }, [])
+
+  useEffect(() => {
+    isPlaying ? play() : pause()
     document.addEventListener('scroll', () => {
-      video.paused && setPlaying(false)
+      video?.paused && setIsPlaying(false)
     })
   })
 
   useEffect(() => {
     isLargerThan650 && splitScroll(`.${slug}_video-container`)
+    window.onresize = () =>
+      setTimeout(() => !isLargerThan650 && window.location.reload(), 500)
   }, [slug, isLargerThan650])
-
-  function toggleFullscreen() {
-    const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
-    if (video.requestFullscreen) {
-      video.requestFullscreen()
-    }
-  }
 
   return (
     <Flex flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'} height='200vh'>
@@ -69,10 +90,10 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         _hover={{
           cursor: 'pointer',
         }}>
-        <PlayButton playing={playing} />
+        <PlayButton isPlaying={isPlaying} />
         {isLargerThan650 && (
           <FullscreenButton
-            playing={playing}
+            playing={isPlaying}
             toggleFullscreen={toggleFullscreen}
           />
         )}
@@ -80,9 +101,9 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           className={`${slug}_video video`}
           src={videoUrl}
-          poster={poster}
+          poster={isFirefox ? '' : poster}
           onClick={() => {
-            setPlaying(!playing)
+            setIsPlaying(!isPlaying)
           }}
         />
       </Box>
