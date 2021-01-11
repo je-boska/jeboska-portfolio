@@ -5,6 +5,7 @@ import { Box, Flex, useMediaQuery } from '@chakra-ui/react'
 import PlayButton from './PlayButton'
 import ProjectText from './ProjectText'
 import FullscreenButton from './FullscreenButton'
+import { checkIfFirefox } from '../utils/checkIfFirefox'
 
 interface ProjectProps {
   project: ProjectType
@@ -43,19 +44,12 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     }
   }
 
-  function checkIfFirefox() {
-    let userAgentString = navigator.userAgent
-    let firefoxAgent = userAgentString.indexOf('Firefox') > -1
-    console.log('checked')
-    setIsFirefox(firefoxAgent)
-  }
-
   useEffect(() => {
     setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
   }, [slug])
 
   useEffect(() => {
-    checkIfFirefox()
+    setIsFirefox(checkIfFirefox())
   }, [])
 
   useEffect(() => {
@@ -90,7 +84,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
         _hover={{
           cursor: 'pointer',
         }}>
-        <PlayButton isPlaying={isPlaying} />
+        <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
         {isLargerThan650 && (
           <FullscreenButton
             playing={isPlaying}
