@@ -11,7 +11,7 @@ interface ProjectProps {
 }
 
 const Project: React.FC<ProjectProps> = ({ project }) => {
-  const [isLargerThan500] = useMediaQuery('(min-width: 500px)')
+  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
 
   const [playing, setPlaying] = useState(false)
 
@@ -40,8 +40,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   })
 
   useEffect(() => {
-    isLargerThan500 && splitScroll(`.${slug}_video-container`)
-  }, [slug, isLargerThan500])
+    isLargerThan650 && splitScroll(`.${slug}_video-container`)
+  }, [slug, isLargerThan650])
 
   function toggleFullscreen() {
     const video = document.querySelector(`.${slug}_video`)! as HTMLVideoElement
@@ -51,28 +51,26 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   }
 
   return (
-    <Flex flexWrap={isLargerThan500 ? 'nowrap' : 'wrap'} height='200vh'>
+    <Flex flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'} height='200vh'>
       <Flex
-        width={isLargerThan500 ? '50%' : '100%'}
-        padding={20}
+        width={isLargerThan650 ? '50%' : '100%'}
+        padding={10}
         display='flex'
         justify='center'
-        align='center'
-      >
+        align='center'>
         <ProjectText title={title} body={body} />
       </Flex>
       <Box
-        width={isLargerThan500 ? '50%' : '100%'}
+        width={isLargerThan650 ? '50%' : '100%'}
         position='relative'
         overflow='hidden'
         height='100vh'
         className={`${slug}_video-container video-container`}
         _hover={{
           cursor: 'pointer',
-        }}
-      >
+        }}>
         <PlayButton playing={playing} />
-        {isLargerThan500 && (
+        {isLargerThan650 && (
           <FullscreenButton
             playing={playing}
             toggleFullscreen={toggleFullscreen}
