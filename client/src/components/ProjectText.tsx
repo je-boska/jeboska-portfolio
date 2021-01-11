@@ -13,12 +13,16 @@ const css = `
     line-height: 1;
 }
 .project-text p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     padding-bottom: 20px;
-    max-width: 500px;
-    opacity: 0.8;
+    max-width: 500px;    opacity: 0.8;
 }
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 768px) {
+  .project-text p {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (min-width: 992px) {
   .project-text p {
     font-size: 1.5rem;
   }
