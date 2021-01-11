@@ -61,8 +61,6 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
   useEffect(() => {
     isLargerThan650 && splitScroll(`.${slug}_video-container`)
-    window.onresize = () =>
-      setTimeout(() => !isLargerThan650 && window.location.reload(), 500)
   }, [slug, isLargerThan650])
 
   return (
