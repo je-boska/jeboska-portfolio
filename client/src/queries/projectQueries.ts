@@ -3,7 +3,7 @@ import groq from 'groq'
 
 export const getProjects = async () => {
   const projects = await sanityClient.fetch(
-    groq`*[_type == "project"] {
+    groq`*[_type == "project"] | order(order asc) {
       _id,
       title,
       "slug": slug.current,
