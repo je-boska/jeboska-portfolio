@@ -90,11 +90,11 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
 
   return (
     <Flex
-      id={index === 0 ? 'first-project' : undefined}
       className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
       height={isLargerThan650 ? '200vh' : ''}>
       <ProjectText
+        first={index === 0 ? true : false}
         title={title}
         body={body}
         isLargerThan650={isLargerThan650}

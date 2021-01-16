@@ -9,13 +9,9 @@ const Header = () => {
   })
 
   function scrollDown() {
-    // window.scroll({
-    //   top: 1500,
-    //   left: 0,
-    //   behavior: 'smooth',
-    // })
-    document.querySelector('#first-project')?.scrollIntoView({
+    document.querySelector('#first-project-text')?.scrollIntoView({
       behavior: 'smooth',
+      block: 'center',
     })
   }
 

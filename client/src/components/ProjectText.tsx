@@ -6,6 +6,7 @@ interface ProjectTextProps {
   title: string
   body: string
   isLargerThan650: boolean
+  first: boolean
 }
 
 // css for BlockContent component
@@ -37,10 +38,12 @@ const ProjectText: React.FC<ProjectTextProps> = ({
   title,
   body,
   isLargerThan650,
+  first,
 }) => {
   return (
     <>
       <Flex
+        id={first ? 'first-project-text' : undefined}
         zIndex='2'
         background='white'
         width={isLargerThan650 ? '50%' : '100%'}
