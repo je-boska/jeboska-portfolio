@@ -37,9 +37,32 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     videos.forEach(video => video.pause())
   }
 
+  function moveVideoOutOfParent() {
+    video && document.body.appendChild(video)
+  }
+
+  function moveVideoBackInParent() {
+    const videoParent = document.querySelector(
+      `.${slug}_video-container`
+    ) as HTMLElement
+    video && videoParent.appendChild(video)
+  }
+
   function toggleFullscreen() {
-    if (video && video.requestFullscreen) {
+    moveVideoOutOfParent()
+    if (video?.requestFullscreen) {
       video.requestFullscreen()
+    }
+  }
+
+  function fullscreenListener() {
+    const state =
+      (document as any).fullScreen ||
+      (document as any).mozFullScreen ||
+      (document as any).webkitIsFullScreen
+
+    if (!state) {
+      moveVideoBackInParent()
     }
   }
 
@@ -56,6 +79,8 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
     document.addEventListener('scroll', () => {
       video?.paused && setIsPlaying(false)
     })
+
+    video?.addEventListener('fullscreenchange', fullscreenListener)
   })
 
   useEffect(() => {
