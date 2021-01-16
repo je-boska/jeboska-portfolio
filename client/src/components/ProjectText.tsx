@@ -13,11 +13,13 @@ const css = `
 .project-text h1 {
     padding-bottom: 40px;
     line-height: 1;
+    max-width: 500px;
 }
 .project-text p {
     font-size: 1.05rem;
     padding-bottom: 20px;
-    max-width: 500px;    opacity: 0.8;
+    max-width: 500px;    
+    opacity: 0.8;
 }
 @media only screen and (min-width: 768px) {
   .project-text p {
