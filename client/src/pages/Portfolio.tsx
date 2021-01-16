@@ -28,8 +28,8 @@ const Portfolio = () => {
       <Header />
       <div>
         {projects &&
-          projects.map(project => (
-            <Project key={project._id} project={project} />
+          projects.map((project, index) => (
+            <Project index={index} key={project._id} project={project} />
           ))}
       </div>
     </>

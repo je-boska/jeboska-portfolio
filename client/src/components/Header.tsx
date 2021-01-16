@@ -1,12 +1,23 @@
-import { Text, Box, Flex, Heading } from '@chakra-ui/react'
+import { Text, Box, Flex, Heading, Link } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap'
 
 const Header = () => {
   useEffect(() => {
     gsap.to('.header', { opacity: 1, duration: 1 })
-    gsap.to('.arrow-down', { opacity: 0.25, duration: 1, delay: 1 })
+    gsap.to('.arrow-down', { opacity: 1, duration: 1, delay: 1 })
   })
+
+  function scrollDown() {
+    // window.scroll({
+    //   top: 1500,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // })
+    document.querySelector('#first-project')?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <>
@@ -32,13 +43,18 @@ const Header = () => {
       </Flex>
       <Box
         className='arrow-down'
-        opacity='0'
         position='absolute'
         top='90vh'
         left='50%'
+        opacity='0'
         transform='translate(-50%, -50%)'
         fontSize='2rem'>
-        <i className='fas fa-chevron-down'></i>
+        <Link to='#' opacity='0.2' _hover={{ opacity: '0.5' }}>
+          <i
+            style={{ cursor: 'pointer' }}
+            onClick={scrollDown}
+            className='fas fa-chevron-down'></i>
+        </Link>
       </Box>
     </>
   )

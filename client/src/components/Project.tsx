@@ -9,11 +9,12 @@ import { checkIfFirefox } from '../utils/checkIfFirefox'
 
 interface ProjectProps {
   project: ProjectType
+  index: number
 }
 
 type videoElement = HTMLVideoElement | null
 
-const Project: React.FC<ProjectProps> = ({ project }) => {
+const Project: React.FC<ProjectProps> = ({ project, index }) => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFirefox, setIsFirefox] = useState(false)
@@ -89,6 +90,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 
   return (
     <Flex
+      id={index === 0 ? 'first-project' : undefined}
       className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
       height={isLargerThan650 ? '200vh' : ''}>
