@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from '@chakra-ui/react'
+import { Text, Box, Flex, Heading } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap'
 
@@ -15,6 +15,7 @@ const Header = () => {
         height='100vh'
         justify='center'
         align='center'
+        flexDirection='column'
         opacity='0'
         transition='0.4s opacity linear'>
         <Heading
@@ -23,6 +24,11 @@ const Header = () => {
           fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
           JE Boska
         </Heading>
+        <Text
+          fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
+          opacity='0.7'>
+          composer / music producer
+        </Text>
       </Flex>
       <Box
         className='arrow-down'
