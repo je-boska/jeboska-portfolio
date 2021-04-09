@@ -45,7 +45,6 @@ const ProjectText: React.FC<ProjectTextProps> = ({
       <Flex
         id={first ? 'first-project-text' : undefined}
         zIndex='2'
-        background='white'
         width={isLargerThan650 ? '50%' : '100%'}
         padding={6}
         margin={4}
@@ -54,12 +53,14 @@ const ProjectText: React.FC<ProjectTextProps> = ({
         borderLeft={!isLargerThan650 ? '1px solid rgba(0, 0, 0, 0.3)' : ''}
         display='flex'
         justify='center'
-        align='center'>
+        align='center'
+      >
         <style>{css}</style>
         <Box
           className='project-text to-fade'
           opacity='0'
-          transition='0.4s opacity linear'>
+          transition='0.4s opacity linear'
+        >
           <Heading as='h1' fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
             {title}
           </Heading>

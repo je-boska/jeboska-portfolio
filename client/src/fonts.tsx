@@ -9,6 +9,7 @@ export const Fonts = () => (
         src: url('./fonts/Karrik-Regular.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
+        font-display: block;
       }
       
       @font-face {
@@ -16,6 +17,7 @@ export const Fonts = () => (
         src: url('./fonts/Karrik-Italic.woff2') format('woff2');
         font-weight: normal;
         font-style: italic;
+        font-display: block;
       }
       
     `}
