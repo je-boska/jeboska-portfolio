@@ -24,17 +24,26 @@ const Header = () => {
         align='center'
         flexDirection='column'
         opacity='0'
-        transition='0.4s opacity linear'>
+        transition='0.4s opacity linear'
+      >
         <Heading
-          className='jeboska'
+          className='studio-conflux'
           as='h1'
-          fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
-          JE Boska
+          fontFamily='qigong'
+          textAlign='center'
+          fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}
+        >
+          Studio Conflux
         </Heading>
         <Text
+          textAlign='center'
+          pt={4}
           fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-          opacity='0.7'>
-          composer / music producer
+          opacity='0.7'
+        >
+          Composition for Arts & Media // Music Production
+          <br />
+          Sound Design // Audio Mixing
         </Text>
       </Flex>
       <Box
@@ -44,12 +53,14 @@ const Header = () => {
         left='50%'
         opacity='0'
         transform='translate(-50%, -50%)'
-        fontSize='2rem'>
+        fontSize='2rem'
+      >
         <Link to='#' opacity='0.2' _hover={{ opacity: '0.5' }}>
           <i
             style={{ cursor: 'pointer' }}
             onClick={scrollDown}
-            className='fas fa-chevron-down'></i>
+            className='fas fa-chevron-down'
+          ></i>
         </Link>
       </Box>
     </>
