@@ -12,7 +12,7 @@ interface ProjectTextProps {
 // css for BlockContent component
 const css = `
 .project-text h1 {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
     line-height: 1;
     max-width: 500px;
 }
@@ -61,7 +61,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
           opacity='0'
           transition='0.4s opacity linear'
         >
-          <Heading as='h1' fontSize={{ base: '3rem', md: '4rem', lg: '5rem' }}>
+          <Heading as='h1' fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}>
             {title}
           </Heading>
           <BlockContent blocks={body} />

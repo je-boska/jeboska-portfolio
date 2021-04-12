@@ -1,8 +1,11 @@
-import { Text, Box, Flex, Heading, Link } from '@chakra-ui/react'
+import { Text, Box, Flex, Heading, Link, useMediaQuery } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap'
+import { Link as RouterLink } from 'react-router-dom'
 
 const Header = () => {
+  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
+
   useEffect(() => {
     gsap.to('.studio-conflux', { opacity: 1, duration: 1, delay: 1 })
     gsap.to('.studio-conflux-description', {
@@ -10,7 +13,7 @@ const Header = () => {
       duration: 1,
       delay: 2,
     })
-    gsap.to('.arrow-down', { opacity: 1, duration: 1, delay: 2 })
+    gsap.to('.arrow-down', { opacity: 1, duration: 1, delay: 3 })
   })
 
   function scrollDown() {
@@ -30,32 +33,43 @@ const Header = () => {
         flexDirection='column'
         transition='0.4s opacity linear'
       >
-        <Heading
-          className='studio-conflux'
-          as='h1'
-          fontFamily='qigong'
-          textAlign='center'
-          opacity='0'
-          fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}
-        >
-          Studio Conflux
-        </Heading>
-        <Text
-          className='studio-conflux-description'
-          textAlign='center'
-          pt={4}
-          fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-          opacity='0'
-        >
-          Composition for Arts & Media // Music Production
-          <br />
-          Sound Design // Audio Mixing
-        </Text>
+        <Box>
+          <RouterLink to='/contact'>
+            <Heading
+              className='studio-conflux'
+              as='h1'
+              fontFamily='qigong'
+              opacity='0'
+              textAlign={isLargerThan650 ? 'center' : 'left'}
+              fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}
+            >
+              {isLargerThan650 ? (
+                'Studio Conflux'
+              ) : (
+                <>
+                  Studio
+                  <br /> Conflux
+                </>
+              )}
+            </Heading>
+          </RouterLink>
+          <Text
+            className='studio-conflux-description'
+            pt={2}
+            textAlign={isLargerThan650 ? 'center' : 'right'}
+            fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
+            opacity='0'
+          >
+            Composition, Music Production and Sound Design
+            <br />
+            for Arts & Media
+          </Text>
+        </Box>
       </Flex>
       <Box
         className='arrow-down'
         position='absolute'
-        top='90vh'
+        top={isLargerThan650 ? '90vh' : '85vh'}
         left='50%'
         opacity='0'
         transform='translate(-50%, -50%)'
