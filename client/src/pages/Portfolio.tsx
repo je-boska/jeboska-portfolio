@@ -4,7 +4,6 @@ import Project from '../components/Project'
 import { fadeIn } from '../effects/fadeIn'
 import { getProjects } from '../queries/projectQueries'
 import { ProjectType } from '../types'
-import { motion } from 'framer-motion'
 
 const Portfolio = () => {
   const [loading, setLoading] = useState(true) as any
@@ -25,7 +24,7 @@ const Portfolio = () => {
   }
 
   return (
-    <motion.div>
+    <>
       <Header />
       <div>
         {projects &&
@@ -33,7 +32,7 @@ const Portfolio = () => {
             <Project index={index} key={project._id} project={project} />
           ))}
       </div>
-    </motion.div>
+    </>
   )
 }
 

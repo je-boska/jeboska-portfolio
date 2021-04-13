@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 const Contact = () => {
   return (
     <motion.div
-      initial={{ translateY: -500 }}
-      animate={{ translateY: 0 }}
-      exit={{ translateY: -500 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <Flex justify='center' align='center' height='100vh'>
         <Link to='/portfolio'>
