@@ -44,7 +44,7 @@ const Header = () => {
                   baseFrequency='0.02 0.0645034'
                 ></feTurbulence>
                 <feDisplacementMap
-                  scale='12'
+                  scale={isLargerThan650 ? '12' : '6'}
                   in='SourceGraphic'
                 ></feDisplacementMap>
               </filter>
