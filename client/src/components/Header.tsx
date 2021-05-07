@@ -80,7 +80,7 @@ const Header = () => {
           </RouterLink>
           <Text
             className='studio-conflux-description'
-            pt={2}
+            pt={isLargerThan650 ? 6 : 2}
             textAlign={isLargerThan650 ? 'center' : 'right'}
             fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
             opacity='0'
