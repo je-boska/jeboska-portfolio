@@ -1,7 +1,5 @@
-import { Flex, Box, Heading } from '@chakra-ui/react'
-import BlockContent from '@sanity/block-content-to-react'
+import { Box, Heading } from '@chakra-ui/react'
 import React from 'react'
-import { useViewportScroll, useTransform, motion } from 'framer-motion'
 
 interface ProjectTextProps {
   title: string

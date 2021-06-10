@@ -1,6 +1,4 @@
-import { Text, Box, Flex, Heading, Link, useMediaQuery } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
-import { gsap } from 'gsap'
+import { Text, Box, Flex, Heading, useMediaQuery } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
