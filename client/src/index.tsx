@@ -19,7 +19,7 @@ const components = {
     sizes: {
       xl: {
         fontSize: '5rem',
-        fontFamily: 'karrik',
+        fontFamily: 'futura-pt',
       },
     },
   },

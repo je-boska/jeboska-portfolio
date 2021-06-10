@@ -27,6 +27,14 @@ export const Fonts = () => (
         font-style: normal;
         font-display: block;
       }
+
+      @font-face {
+        font-family: 'futura-pt';
+        src: url('./fonts/FuturaPTBook.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: block;
+      }
       
     `}
   />

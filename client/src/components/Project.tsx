@@ -84,15 +84,15 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     video?.addEventListener('fullscreenchange', fullscreenListener)
   })
 
-  useEffect(() => {
-    splitScroll(`.${slug}_video-container`, isLargerThan650)
-  }, [slug, isLargerThan650])
+  // useEffect(() => {
+  //   splitScroll(`.${slug}_video-container`, isLargerThan650)
+  // }, [slug, isLargerThan650])
 
   return (
-    <Flex
+    <Box
       className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height={isLargerThan650 ? '200vh' : ''}
+      height={isLargerThan650 ? '120vh' : ''}
     >
       <ProjectText
         first={index === 0 ? true : false}
@@ -102,16 +102,16 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
       />
 
       <Box
-        width={isLargerThan650 ? '50%' : '100%'}
+        width={isLargerThan650 ? '80%' : '100%'}
         position='relative'
-        overflow='hidden'
-        height='100vh'
+        height='80vh'
+        margin='0 auto'
         className={`${slug}_video-container video-container`}
         _hover={{
           cursor: 'pointer',
         }}
       >
-        <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        {/* <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
         {isLargerThan650 && (
           <FullscreenButton
             playing={isPlaying}
@@ -119,7 +119,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
           />
         )}
         <video
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ height: '100%', margin: '0 auto' }}
           className={`${slug}_video video`}
           src={videoUrl}
           poster={isFirefox ? '' : poster}
@@ -128,7 +128,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
           }}
         />
       </Box>
-    </Flex>
+    </Box>
   )
 }
 

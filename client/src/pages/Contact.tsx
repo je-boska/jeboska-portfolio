@@ -12,7 +12,7 @@ const Contact = () => {
     >
       <Flex justify='center' align='center' height='100vh'>
         <Link to='/portfolio'>
-          <Text maxW='600px'>
+          <Text maxW='600px' fontFamily='futura-pt'>
             Studio Conflux is a Berlin sound design, composition, music
             production and mixing studio, run by Tim Roth, Philipp Hülsenbeck
             and Jon Eirik Boska. We’re passionate about anything sound and

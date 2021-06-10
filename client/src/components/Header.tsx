@@ -2,29 +2,34 @@ import { Text, Box, Flex, Heading, Link, useMediaQuery } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { gsap } from 'gsap'
 import { Link as RouterLink } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Header = () => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
 
-  useEffect(() => {
-    gsap.to('.studio-conflux', { opacity: 1, duration: 1, delay: 1 })
-    gsap.to('.studio-conflux-description', {
-      opacity: 0.7,
-      duration: 1,
-      delay: 2,
-    })
-    gsap.to('.arrow-down', { opacity: 1, duration: 1, delay: 3 })
-  })
+  // useEffect(() => {
+  //   gsap.to('.studio-conflux', { opacity: 1, duration: 1, delay: 1 })
+  //   gsap.to('.studio-conflux-description', {
+  //     opacity: 0.7,
+  //     duration: 1,
+  //     delay: 2,
+  //   })
+  //   gsap.to('.arrow-down', { opacity: 1, duration: 1, delay: 3 })
+  // })
 
-  function scrollDown() {
-    document.querySelector('#first-project-text')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-    })
-  }
+  // function scrollDown() {
+  //   document.querySelector('#first-project-text')?.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'center',
+  //   })
+  // }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Flex
         className='header'
         height='100vh'
@@ -63,10 +68,10 @@ const Header = () => {
               className='studio-conflux'
               as='h1'
               fontFamily='qigong'
-              opacity='0'
+              opacity='1'
               filter="url('#wavy')"
               textAlign={isLargerThan650 ? 'center' : 'left'}
-              fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}
+              fontSize={{ base: '1.5rem', md: '3rem', lg: '4rem' }}
             >
               {isLargerThan650 ? (
                 'Studio Conflux'
@@ -82,8 +87,9 @@ const Header = () => {
             className='studio-conflux-description'
             pt={isLargerThan650 ? 6 : 2}
             textAlign={isLargerThan650 ? 'center' : 'right'}
+            fontFamily='futura-pt'
             fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-            opacity='0'
+            opacity='0.7'
           >
             Composition, Music Production and Sound Design
             <br />
@@ -96,19 +102,18 @@ const Header = () => {
         position='absolute'
         top={isLargerThan650 ? '90vh' : '85vh'}
         left='50%'
-        opacity='0'
+        opacity='1'
         transform='translate(-50%, -50%)'
         fontSize='2rem'
       >
-        <Link to='#' opacity='0.2' _hover={{ opacity: '0.5' }}>
-          <i
-            style={{ cursor: 'pointer' }}
-            onClick={scrollDown}
-            className='fas fa-chevron-down'
-          ></i>
-        </Link>
+        <i
+          // style={{ cursor: 'pointer' }}
+          // onClick={scrollDown}
+          className='fas fa-chevron-down'
+          style={{ opacity: 0.3 }}
+        ></i>
       </Box>
-    </>
+    </motion.div>
   )
 }
 

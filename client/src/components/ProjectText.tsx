@@ -1,6 +1,7 @@
 import { Flex, Box, Heading } from '@chakra-ui/react'
 import BlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import { useViewportScroll, useTransform, motion } from 'framer-motion'
 
 interface ProjectTextProps {
   title: string
@@ -42,17 +43,16 @@ const ProjectText: React.FC<ProjectTextProps> = ({
 }) => {
   return (
     <>
-      <Flex
+      <Box
         id={first ? 'first-project-text' : undefined}
         zIndex='2'
         width={isLargerThan650 ? '50%' : '100%'}
         padding={6}
-        margin={4}
+        margin='0 auto'
         marginTop={isLargerThan650 ? '' : '150px'}
-        borderTop={isLargerThan650 ? '' : '1px solid rgba(255, 255, 255, 0.3)'}
-        borderLeft={isLargerThan650 ? '' : '1px solid rgba(255, 255, 255, 0.3)'}
-        display='flex'
         justify='center'
+        position='sticky'
+        top={2}
         align='center'
       >
         <style>{css}</style>
@@ -61,12 +61,15 @@ const ProjectText: React.FC<ProjectTextProps> = ({
           opacity='0'
           transition='0.4s opacity linear'
         >
-          <Heading as='h1' fontSize={{ base: '2rem', md: '3rem', lg: '4rem' }}>
+          <Heading
+            as='h1'
+            fontSize={{ base: '1.5rem', md: '2rem', lg: '2rem' }}
+          >
             {title}
           </Heading>
-          <BlockContent blocks={body} />
+          {/* <BlockContent blocks={body} /> */}
         </Box>
-      </Flex>
+      </Box>
     </>
   )
 }
