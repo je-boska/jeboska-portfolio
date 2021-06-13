@@ -17,7 +17,7 @@ const checkPosition = (element: HTMLElement, windowHeight: number) => {
 
 export const fadeIn = (): void => {
   let elements: NodeListOf<HTMLElement> = document.querySelectorAll('.to-fade')
-  let windowHeight = window.innerHeight / 10
+  let windowHeight = window.innerHeight / 20
 
   for (let i = 0; i < elements.length; i++) {
     checkPosition(elements[i], windowHeight)

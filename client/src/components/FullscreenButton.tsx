@@ -14,9 +14,10 @@ const FullscreenButton: React.FC<FullscreenButtonProps> = ({
     <Box
       opacity={playing ? 0.5 : 0}
       color='white'
-      position='absolute'
-      top='20px'
-      left='20px'
+      // position='absolute'
+      position='fixed'
+      // top='20px'
+      // left='20px'
       zIndex='1'
       transition='0.4s opacity ease-in-out'
       onClick={() => toggleFullscreen()}

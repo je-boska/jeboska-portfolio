@@ -30,7 +30,7 @@ export const Fonts = () => (
 
       @font-face {
         font-family: 'futura-pt';
-        src: url('./fonts/FuturaPTBook.otf') format('opentype');
+        src: url('./fonts/FuturaPTLight.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
         font-display: block;

@@ -91,7 +91,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     <Box
       className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height={isLargerThan650 ? '200vh' : ''}
+      height='60vh'
     >
       <ProjectText
         first={index === 0 ? true : false}

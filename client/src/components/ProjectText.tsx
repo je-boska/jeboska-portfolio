@@ -8,10 +8,16 @@ interface ProjectTextProps {
   first: boolean
 }
 
-// css for BlockContent component
-const css = `
+const ProjectText: React.FC<ProjectTextProps> = ({
+  title,
+  body,
+  isLargerThan650,
+  first,
+}) => {
+  // css for BlockContent component
+  const css = `
 .project-text h1 {
-    padding-bottom: 100px;
+    padding-bottom: ${isLargerThan650 ? '300px' : '100px'};
     line-height: 1;
     max-width: 500px;
 }
@@ -33,17 +39,11 @@ const css = `
 }
 `
 
-const ProjectText: React.FC<ProjectTextProps> = ({
-  title,
-  body,
-  isLargerThan650,
-  first,
-}) => {
   return (
     <>
       <Box
         id={first ? 'first-project-text' : undefined}
-        zIndex='2'
+        zIndex='-1'
         width={isLargerThan650 ? '50%' : '100%'}
         padding={6}
         margin='0 auto'
@@ -63,7 +63,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
             as='h1'
             fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
           >
-            {title.toUpperCase()}
+            {title}
           </Heading>
           {/* <BlockContent blocks={body} /> */}
         </Box>
