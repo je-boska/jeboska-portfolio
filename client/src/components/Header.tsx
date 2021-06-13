@@ -68,23 +68,18 @@ const Header = () => {
               fontFamily='qigong'
               opacity='1'
               filter="url('#wavy')"
-              textAlign={isLargerThan650 ? 'center' : 'left'}
+              textAlign='center'
               fontSize={{ base: '1.5rem', md: '3rem', lg: '4rem' }}
             >
-              {isLargerThan650 ? (
-                'Studio Conflux'
-              ) : (
-                <>
-                  Studio
-                  <br /> Conflux
-                </>
-              )}
+              Studio
+              <br />
+              Conflux
             </Heading>
           </RouterLink>
           <Text
             className='studio-conflux-description'
             pt={isLargerThan650 ? 6 : 2}
-            textAlign={isLargerThan650 ? 'center' : 'right'}
+            textAlign='center'
             fontFamily='futura-pt'
             fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
             opacity='0.7'

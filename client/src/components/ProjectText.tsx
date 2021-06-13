@@ -11,7 +11,7 @@ interface ProjectTextProps {
 // css for BlockContent component
 const css = `
 .project-text h1 {
-    padding-bottom: 20px;
+    padding-bottom: 100px;
     line-height: 1;
     max-width: 500px;
 }
@@ -61,9 +61,9 @@ const ProjectText: React.FC<ProjectTextProps> = ({
         >
           <Heading
             as='h1'
-            fontSize={{ base: '1.5rem', md: '2rem', lg: '2rem' }}
+            fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
           >
-            {title}
+            {title.toUpperCase()}
           </Heading>
           {/* <BlockContent blocks={body} /> */}
         </Box>

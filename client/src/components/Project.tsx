@@ -4,6 +4,7 @@ import { Box, useMediaQuery } from '@chakra-ui/react'
 import ProjectText from './ProjectText'
 import FullscreenButton from './FullscreenButton'
 import { checkIfFirefox } from '../utils/checkIfFirefox'
+import { splitScroll } from '../effects/splitScroll'
 
 interface ProjectProps {
   project: ProjectType
@@ -82,15 +83,15 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     video?.addEventListener('fullscreenchange', fullscreenListener)
   })
 
-  // useEffect(() => {
-  //   splitScroll(`.${slug}_video-container`, isLargerThan650)
-  // }, [slug, isLargerThan650])
+  useEffect(() => {
+    splitScroll(`.${slug}_video-container`)
+  }, [slug])
 
   return (
     <Box
       className={`.${slug}_project`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height={isLargerThan650 ? '120vh' : ''}
+      height={isLargerThan650 ? '200vh' : ''}
     >
       <ProjectText
         first={index === 0 ? true : false}

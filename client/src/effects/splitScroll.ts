@@ -1,15 +1,13 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
-  if (isLargerThan650) {
-    gsap.registerPlugin(ScrollTrigger)
+export const splitScroll = (pinElement: string) => {
+  gsap.registerPlugin(ScrollTrigger)
 
-    ScrollTrigger.create({
-      trigger: pinElement,
-      start: 'top top',
-      end: '100%',
-      pin: true,
-    })
-  }
+  ScrollTrigger.create({
+    trigger: pinElement,
+    start: 'top 10%',
+    end: '100%',
+    pin: true,
+  })
 }
