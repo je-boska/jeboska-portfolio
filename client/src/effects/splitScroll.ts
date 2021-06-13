@@ -15,7 +15,7 @@ export const splitScroll = (pinElement: string) => {
       end: '50%',
       // pin: true,
       scrub: true,
-      markers: true,
+      // markers: true,
       toggleActions: 'play reverse play reverse',
     },
   })
