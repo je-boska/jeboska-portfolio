@@ -12,7 +12,7 @@ export const splitScroll = (pinElement: string) => {
     scrollTrigger: {
       trigger: pinElement,
       start: 'top 100%',
-      end: '50%',
+      end: '35%',
       // pin: true,
       scrub: true,
       // markers: true,
@@ -23,19 +23,22 @@ export const splitScroll = (pinElement: string) => {
   tl.to(pinElement, {
     opacity: 0,
     duration: 0.5,
-    transform: 'translateY(20vh) scale(0.7, 0.7)',
-    willChange: 'opacity, transform',
+    transform: 'translateY(20vh) scale(0.7, 0.7) perspective(800px)',
+    rotateX: -40,
+    willChange: 'opacity, transform, rotateX',
   })
     .to(pinElement, {
       opacity: 1,
       duration: 1,
-      transform: 'translateY(-0vh) scale(1, 1)',
-      willChange: 'opacity, transform',
+      transform: 'translateY(-0vh) scale(1, 1) perspective(800px)',
+      rotateX: 0,
+      willChange: 'opacity, transform, rotateX',
     })
     .to(pinElement, {
       opacity: 0,
       duration: 0.5,
-      transform: 'translateY(-20vh) scale(0.7, 0.7)',
-      willChange: 'opacity, transform',
+      transform: 'translateY(-20vh) scale(0.7, 0.7) perspective(800px)',
+      rotateX: 40,
+      willChange: 'opacity, transform, rotateX',
     })
 }
