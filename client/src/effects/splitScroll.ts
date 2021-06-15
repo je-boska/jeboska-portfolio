@@ -24,15 +24,18 @@ export const splitScroll = (pinElement: string) => {
     opacity: 0,
     duration: 0.5,
     transform: 'translateY(20vh) scale(0.7, 0.7)',
+    willChange: 'opacity, transform',
   })
     .to(pinElement, {
       opacity: 1,
       duration: 1,
       transform: 'translateY(-0vh) scale(1, 1)',
+      willChange: 'opacity, transform',
     })
     .to(pinElement, {
       opacity: 0,
       duration: 0.5,
       transform: 'translateY(-20vh) scale(0.7, 0.7)',
+      willChange: 'opacity, transform',
     })
 }
