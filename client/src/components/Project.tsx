@@ -84,8 +84,8 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
   })
 
   useEffect(() => {
-    splitScroll(`.${slug}_video-container`)
-  }, [slug])
+    splitScroll(`.${slug}_video-container`, isLargerThan650)
+  }, [slug, isLargerThan650])
 
   return (
     <Box
