@@ -30,7 +30,7 @@ export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
       end: '50%',
       // pin: true,
       scrub: true,
-      markers: true,
+      // markers: true,
       toggleActions: 'play reverse play reverse',
       snap: {
         snapTo: 'labels', // snap to the closest label in the timeline
