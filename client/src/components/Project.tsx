@@ -14,7 +14,7 @@ interface ProjectProps {
 type videoElement = HTMLVideoElement | null
 
 const Project: React.FC<ProjectProps> = ({ project, index }) => {
-  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
+  const [isLargerThan650] = useMediaQuery('(min-width: 1px)')
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFirefox, setIsFirefox] = useState(false)
   const [video, setVideo] = useState<videoElement>(null)
@@ -89,9 +89,9 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
 
   return (
     <Box
-      className={`.${slug}_project`}
+      className={`.${slug}_project project-container`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height='60vh'
+      height='50vh'
     >
       <ProjectText
         first={index === 0 ? true : false}
