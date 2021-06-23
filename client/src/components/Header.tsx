@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
 import { Text, Box, Flex, Heading, useMediaQuery } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const Logo = () => {
@@ -80,8 +79,6 @@ const Logo = () => {
 }
 
 const Header = () => {
-  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
