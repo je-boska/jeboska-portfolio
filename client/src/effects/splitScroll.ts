@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
+export const splitScroll = (pinElement: string) => {
   gsap.registerPlugin(ScrollTrigger)
 
   gsap.set(pinElement, {
@@ -45,18 +45,14 @@ export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
     ease: 'in-out',
     opacity: 0,
     // duration: 0.5,
-    transform: `translateY(10vh) scale(0.7, 0.7) ${
-      isLargerThan650 && 'perspective(800px)'
-    }`,
+    transform: 'translateY(10vh) scale(0.7, 0.7) perspective(800px)',
     rotateX: -40,
     willChange: 'opacity, transform, rotateX',
   })
     .to(pinElement, {
       opacity: 1,
       // duration: 1,
-      transform: `translateY(-0vh) scale(1, 1) ${
-        isLargerThan650 && 'perspective(800px)'
-      }`,
+      transform: 'translateY(-0vh) scale(1, 1) perspective(800px)',
       willChange: 'opacity, transform, rotateX',
     })
     .addLabel('middle')
@@ -64,9 +60,7 @@ export const splitScroll = (pinElement: string, isLargerThan650: boolean) => {
       ease: 'in-out',
       opacity: 0,
       // duration: 0.5,
-      transform: `translateY(-10vh) scale(0.7, 0.7) ${
-        isLargerThan650 && 'perspective(800px)'
-      }`,
+      transform: 'translateY(-10vh) scale(0.7, 0.7) perspective(800px)',
       rotateX: 40,
       willChange: 'opacity, transform, rotateX',
     })

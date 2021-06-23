@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Header from '../components/Header'
 import Project from '../components/Project'
 import { fadeIn } from '../effects/fadeIn'
 import { getProjects } from '../queries/projectQueries'
@@ -19,19 +18,15 @@ const Portfolio = () => {
     !loading && window.addEventListener('scroll', fadeIn)
   })
 
-  if (loading) {
-    return <Header />
-  }
-
   return (
     <>
-      <Header />
       <div>
         {projects &&
+          !loading &&
           projects.map((project, index) => (
             <Project index={index} key={project._id} project={project} />
           ))}
-        <div style={{ height: '100vh' }}></div>
+        <div style={{ height: 600 }}></div>
       </div>
     </>
   )

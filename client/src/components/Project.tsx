@@ -14,7 +14,7 @@ interface ProjectProps {
 type videoElement = HTMLVideoElement | null
 
 const Project: React.FC<ProjectProps> = ({ project, index }) => {
-  const [isLargerThan650] = useMediaQuery('(min-width: 1px)')
+  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFirefox, setIsFirefox] = useState(false)
   const [video, setVideo] = useState<videoElement>(null)
@@ -84,7 +84,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
   })
 
   useEffect(() => {
-    splitScroll(`.${slug}_video-container`, isLargerThan650)
+    splitScroll(`.${slug}_video-container`)
   }, [slug, isLargerThan650])
 
   return (

@@ -10,6 +10,7 @@ const Logo = () => {
 
   useEffect(() => {
     const svgElem = elementRef.current
+
     svgElem!.addEventListener('load', () => {
       setVisible(true)
     })
@@ -48,21 +49,19 @@ const Logo = () => {
             ></animate>
           </defs>
         </svg>
-        <RouterLink to='/contact'>
-          <Heading
-            className='studio-conflux'
-            as='h1'
-            fontFamily='qigong'
-            opacity='1'
-            filter="url('#wavy')"
-            textAlign='center'
-            fontSize={{ base: '1.5rem', md: '3rem', lg: '4rem' }}
-          >
-            Studio
-            <br />
-            Conflux
-          </Heading>
-        </RouterLink>
+        <Heading
+          className='studio-conflux'
+          as='h1'
+          fontFamily='qigong'
+          opacity='1'
+          filter="url('#wavy')"
+          textAlign='center'
+          fontSize={{ base: '1.5rem', md: '3rem', lg: '4rem' }}
+        >
+          Studio
+          <br />
+          Conflux
+        </Heading>
         <Text
           className='studio-conflux-description'
           pt={isLargerThan650 ? 6 : 2}
@@ -99,22 +98,6 @@ const Header = () => {
       >
         <Logo />
       </Flex>
-      <Box
-        className='arrow-down'
-        position='absolute'
-        top={isLargerThan650 ? '90vh' : '85vh'}
-        left='50%'
-        opacity='1'
-        transform='translate(-50%, -50%)'
-        fontSize='2rem'
-      >
-        <i
-          // style={{ cursor: 'pointer' }}
-          // onClick={scrollDown}
-          className='fas fa-chevron-down'
-          style={{ opacity: 0.3 }}
-        ></i>
-      </Box>
     </motion.div>
   )
 }
