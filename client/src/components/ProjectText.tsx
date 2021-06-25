@@ -17,7 +17,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
   // css for BlockContent component
   const css = `
 .project-text h1 {
-    padding-bottom: ${isLargerThan650 ? '300px' : '100px'};
+    padding-bottom: ${isLargerThan650 ? '100px' : '100px'};
     line-height: 1;
     max-width: 500px;
 }
@@ -51,18 +51,15 @@ const ProjectText: React.FC<ProjectTextProps> = ({
         justify='center'
         position='sticky'
         top={2}
-        align='center'
-      >
+        align='center'>
         <style>{css}</style>
         <Box
           className='project-text to-fade'
           opacity='0'
-          transition='0.4s opacity linear'
-        >
+          transition='0.4s opacity linear'>
           <Heading
             as='h1'
-            fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
-          >
+            fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}>
             {title}
           </Heading>
           {/* <BlockContent blocks={body} /> */}

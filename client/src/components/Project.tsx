@@ -91,8 +91,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     <Box
       className={`.${slug}_project project-container`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height='50vh'
-    >
+      height='50vh'>
       <ProjectText
         first={index === 0 ? true : false}
         title={title}
@@ -108,8 +107,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
         className={`${slug}_video-container video-container`}
         _hover={{
           cursor: 'pointer',
-        }}
-      >
+        }}>
         {/* <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
         {isLargerThan650 && (
           <FullscreenButton

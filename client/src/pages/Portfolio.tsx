@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Header from '../components/Header'
 import Project from '../components/Project'
 import { fadeIn } from '../effects/fadeIn'
 import { getProjects } from '../queries/projectQueries'
@@ -20,6 +21,7 @@ const Portfolio = () => {
 
   return (
     <>
+      <Header />
       <div>
         {projects &&
           !loading &&
