@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { Text, Box, Flex, Heading, useMediaQuery } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 const Header = () => {
@@ -18,10 +17,7 @@ const Header = () => {
   }, [])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}>
+    <div>
       {loading && (
         <Flex height='100vh' justify='center' align='center'>
           <Text fontFamily='futura-pt'>Loading...</Text>
@@ -87,7 +83,7 @@ const Header = () => {
           </Text>
         </Box>
       </Flex>
-    </motion.div>
+    </div>
   )
 }
 
