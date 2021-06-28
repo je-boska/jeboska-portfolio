@@ -44,7 +44,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
       <Box
         id={first ? 'first-project-text' : undefined}
         zIndex='-1'
-        width={isLargerThan650 ? '50%' : '100%'}
+        width='100%'
         padding={6}
         margin='0 auto'
         marginTop='150px'
@@ -59,8 +59,9 @@ const ProjectText: React.FC<ProjectTextProps> = ({
           transition='0.4s opacity linear'>
           <Heading
             as='h1'
+            letterSpacing='1.2rem'
             fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}>
-            {title}
+            {title.toUpperCase()}
           </Heading>
           {/* <BlockContent blocks={body} /> */}
         </Box>

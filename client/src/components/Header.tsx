@@ -5,7 +5,9 @@ import { useState } from 'react'
 const Header = () => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
   const elementRef = useRef<SVGSVGElement | null>(null)
+  const about = useRef<HTMLParagraphElement | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showAbout, setShowAbout] = useState(false)
 
   useEffect(() => {
     const svgElem = elementRef.current
@@ -16,6 +18,16 @@ const Header = () => {
     //eslint-disable-next-line
   }, [])
 
+  useEffect(() => {
+    about.current?.addEventListener('mouseenter', () => {
+      setShowAbout(true)
+    })
+    about.current?.addEventListener('mouseleave', () => {
+      setShowAbout(false)
+    })
+    return () => {}
+  })
+
   return (
     <div>
       {loading && (
@@ -23,6 +35,20 @@ const Header = () => {
           <Text fontFamily='futura-pt'>Loading...</Text>
         </Flex>
       )}
+      <Flex
+        width='100%'
+        justify='space-between'
+        align='center'
+        p={8}
+        fontFamily='futura-pt'
+        fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
+        letterSpacing='1.2rem'
+        opacity='0.7'>
+        <Text as='h1' cursor='pointer' ref={about}>
+          {showAbout ? 'ABOUT' : '?'}
+        </Text>
+        <Text as='h1'>P</Text>
+      </Flex>
       <Flex
         visibility={loading ? 'hidden' : 'visible'}
         className='header'
@@ -65,12 +91,12 @@ const Header = () => {
             opacity='1'
             filter="url('#wavy')"
             textAlign='center'
-            fontSize={{ base: '1.5rem', md: '3rem', lg: '4rem' }}>
+            fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}>
             Studio
             <br />
             Conflux
           </Heading>
-          <Text
+          {/* <Text
             className='studio-conflux-description'
             pt={isLargerThan650 ? 6 : 2}
             textAlign='center'
@@ -80,7 +106,7 @@ const Header = () => {
             Composition, Music Production and Sound Design
             <br />
             for Arts & Media
-          </Text>
+          </Text> */}
         </Box>
       </Flex>
     </div>
