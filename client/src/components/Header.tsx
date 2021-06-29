@@ -4,13 +4,17 @@ import { useState } from 'react'
 
 const Header = () => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
-  const elementRef = useRef<SVGSVGElement | null>(null)
-  const about = useRef<HTMLParagraphElement | null>(null)
+  const svgRef = useRef<SVGSVGElement | null>(null)
+  const aboutLink = useRef<HTMLParagraphElement | null>(null)
+  const projectsLink = useRef<HTMLParagraphElement | null>(null)
+  const scrollAnchor = useRef<HTMLDivElement | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showAboutLink, setShowAboutLink] = useState(false)
+  const [showProjectsLink, setShowProjectsLink] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
 
   useEffect(() => {
-    const svgElem = elementRef.current
+    const svgElem = svgRef.current
 
     svgElem!.addEventListener('load', () => {
       setLoading(false)
@@ -19,14 +23,28 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    about.current?.addEventListener('mouseenter', () => {
-      setShowAbout(true)
+    aboutLink.current?.addEventListener('mouseenter', () => {
+      setShowAboutLink(true)
     })
-    about.current?.addEventListener('mouseleave', () => {
-      setShowAbout(false)
+    aboutLink.current?.addEventListener('mouseleave', () => {
+      setShowAboutLink(false)
+    })
+    projectsLink.current?.addEventListener('mouseenter', () => {
+      setShowProjectsLink(true)
+    })
+    projectsLink.current?.addEventListener('mouseleave', () => {
+      setShowProjectsLink(false)
     })
     return () => {}
-  })
+  }, [])
+
+  function toggleAbout() {
+    setShowAbout(!showAbout)
+  }
+
+  function scrollDown() {
+    window.scrollTo(0, 500)
+  }
 
   return (
     <div>
@@ -44,10 +62,12 @@ const Header = () => {
         fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
         letterSpacing='1.2rem'
         opacity='0.7'>
-        <Text as='h1' cursor='pointer' ref={about}>
-          {showAbout ? 'ABOUT' : '?'}
+        <Text as='h1' cursor='pointer' ref={aboutLink} onClick={toggleAbout}>
+          {showAboutLink ? (showAbout ? 'STUDIO CONFLUX' : 'ABOUT') : '?'}
         </Text>
-        <Text as='h1'>P</Text>
+        <Text as='h1' cursor='pointer' ref={projectsLink} onClick={scrollDown}>
+          {showProjectsLink ? 'PROJECTS' : 'P'}
+        </Text>
       </Flex>
       <Flex
         visibility={loading ? 'hidden' : 'visible'}
@@ -59,7 +79,7 @@ const Header = () => {
         transition='0.4s opacity linear'>
         <Box>
           <svg
-            ref={elementRef}
+            ref={svgRef}
             className='animate-filter'
             width='100%'
             height='100%'
@@ -84,31 +104,36 @@ const Header = () => {
                 repeatCount='indefinite'></animate>
             </defs>
           </svg>
-          <Heading
-            className='studio-conflux'
-            as='h1'
-            fontFamily='qigong'
-            opacity='1'
-            filter="url('#wavy')"
-            textAlign='center'
-            fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}>
-            Studio
-            <br />
-            Conflux
-          </Heading>
-          {/* <Text
-            className='studio-conflux-description'
-            pt={isLargerThan650 ? 6 : 2}
-            textAlign='center'
-            fontFamily='futura-pt'
-            fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-            opacity='0.7'>
-            Composition, Music Production and Sound Design
-            <br />
-            for Arts & Media
-          </Text> */}
+          {!showAbout && (
+            <Heading
+              className='studio-conflux'
+              as='h1'
+              fontFamily='qigong'
+              opacity='1'
+              filter="url('#wavy')"
+              textAlign='center'
+              fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}>
+              Studio
+              <br />
+              Conflux
+            </Heading>
+          )}
+          {showAbout && (
+            <Text
+              className='studio-conflux-description'
+              pt={isLargerThan650 ? 6 : 2}
+              textAlign='center'
+              fontFamily='futura-pt'
+              fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
+              opacity='0.7'>
+              Composition, Music Production and Sound Design
+              <br />
+              for Arts & Media
+            </Text>
+          )}
         </Box>
       </Flex>
+      <div ref={scrollAnchor}></div>
     </div>
   )
 }
