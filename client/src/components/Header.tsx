@@ -43,7 +43,7 @@ const Header = () => {
   }
 
   function scrollDown() {
-    window.scrollTo(0, 500)
+    scrollAnchor?.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -53,6 +53,7 @@ const Header = () => {
           <Text fontFamily='futura-pt'>Loading...</Text>
         </Flex>
       )}
+      <div style={{ transform: 'translateY(100vh)' }} ref={scrollAnchor}></div>
       <Flex
         width='100%'
         justify='space-between'
@@ -133,7 +134,6 @@ const Header = () => {
           )}
         </Box>
       </Flex>
-      <div ref={scrollAnchor}></div>
     </div>
   )
 }
