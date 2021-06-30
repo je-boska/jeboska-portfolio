@@ -119,7 +119,7 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
           style={{ height: '100%', margin: '0 auto' }}
           className={`${slug}_video video`}
           src={videoUrl}
-          poster={isFirefox ? '' : poster}
+          poster={poster}
           onClick={() => {
             setIsPlaying(!isPlaying)
           }}
