@@ -57,7 +57,6 @@ const Header = () => {
       <Flex
         width='100%'
         justify='space-between'
-        align='center'
         p={8}
         fontFamily='futura-pt'
         fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
