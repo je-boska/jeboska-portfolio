@@ -19,7 +19,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
 .project-text h1 {
     padding-bottom: ${isLargerThan650 ? '100px' : '100px'};
     line-height: 1;
-    max-width: 500px;
+    max-width: 100%;
 }
 .project-text p {
     font-size: 1.05rem;

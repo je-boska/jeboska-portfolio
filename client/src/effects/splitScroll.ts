@@ -29,9 +29,9 @@ export const splitScroll = (pinElement: string) => {
   tl.to(pinElement, {
     ease: 'in-out',
     opacity: 0,
-    transform: 'translateY(10vh) scale(0.7, 0.7) perspective(800px)',
+    transform: 'scale(0.7, 0.7) perspective(800px)',
     rotateX: -40,
-    willChange: 'opacity, transform, rotateX',
+    willChange: 'opacity, rotateX',
   })
     .to(pinElement, {
       opacity: 1,
@@ -42,8 +42,8 @@ export const splitScroll = (pinElement: string) => {
     .to(pinElement, {
       ease: 'in-out',
       opacity: 0,
-      transform: 'translateY(-10vh) scale(0.7, 0.7) perspective(800px)',
+      transform: 'scale(0.7, 0.7) perspective(800px)',
       rotateX: 40,
-      willChange: 'opacity, transform, rotateX',
+      willChange: 'opacity, rotateX',
     })
 }
