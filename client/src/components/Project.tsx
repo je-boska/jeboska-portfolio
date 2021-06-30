@@ -3,7 +3,7 @@ import { ProjectType } from '../types'
 import { Box, useMediaQuery } from '@chakra-ui/react'
 import ProjectText from './ProjectText'
 import FullscreenButton from './FullscreenButton'
-import { checkIfFirefox } from '../utils/checkIfFirefox'
+// import { checkIfFirefox } from '../utils/checkIfFirefox'
 import { splitScroll } from '../effects/splitScroll'
 
 interface ProjectProps {
@@ -16,7 +16,7 @@ type videoElement = HTMLVideoElement | null
 const Project: React.FC<ProjectProps> = ({ project, index }) => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isFirefox, setIsFirefox] = useState(false)
+  // const [isFirefox, setIsFirefox] = useState(false)
   const [video, setVideo] = useState<videoElement>(null)
 
   const { title, slug, body, videoUrl, poster } = project
@@ -70,9 +70,9 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
   }, [slug])
 
-  useEffect(() => {
-    setIsFirefox(checkIfFirefox())
-  }, [])
+  // useEffect(() => {
+  //   setIsFirefox(checkIfFirefox())
+  // }, [])
 
   useEffect(() => {
     isPlaying ? play() : pause()
