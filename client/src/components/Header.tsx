@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Text, Box, Flex, Heading, useMediaQuery } from '@chakra-ui/react'
 import { useState } from 'react'
+import { checkIfFirefox } from '../utils/checkIfFirefox'
 
 const Header = () => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
@@ -12,6 +13,7 @@ const Header = () => {
   const [showAboutLink, setShowAboutLink] = useState(false)
   const [showProjectsLink, setShowProjectsLink] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
+  const [isFirefox, setIsFirefox] = useState(false)
 
   useEffect(() => {
     const svgElem = svgRef.current
@@ -38,6 +40,10 @@ const Header = () => {
     return () => {}
   }, [])
 
+  useEffect(() => {
+    setIsFirefox(checkIfFirefox())
+  }, [])
+
   function toggleAbout() {
     setShowAbout(!showAbout)
   }
@@ -48,7 +54,7 @@ const Header = () => {
 
   return (
     <div>
-      {loading && (
+      {loading && !isFirefox && (
         <Flex height='100vh' justify='center' align='center'>
           <Text fontFamily='futura-pt'>Loading...</Text>
         </Flex>
