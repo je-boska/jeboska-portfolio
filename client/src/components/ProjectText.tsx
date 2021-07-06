@@ -18,7 +18,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
   // css for BlockContent component
   const css = `
 .project-text h1 {
-    padding-bottom: 10px;
+    padding-bottom: ${isLargerThan650 ? '15px' : '10px'};
     line-height: 1;
     max-width: 100%;
     text-align: center;

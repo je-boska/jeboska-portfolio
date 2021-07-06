@@ -35,7 +35,7 @@ export const splitScroll = (pinElement: string) => {
   })
     .to(pinElement, {
       opacity: 1,
-      transform: 'translateY(5vh) scale(1, 1) perspective(800px)',
+      transform: 'translateY(6vh) scale(1, 1) perspective(800px)',
       willChange: 'opacity, transform, rotateX',
     })
     .addLabel('middle')
