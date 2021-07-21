@@ -16,13 +16,14 @@ const Header = () => {
   const [isFirefox, setIsFirefox] = useState(false)
 
   useEffect(() => {
-    const svgElem = svgRef.current
+    if (isFirefox) {
+      setLoading(false)
+    }
 
-    svgElem!.addEventListener('load', () => {
+    svgRef.current?.addEventListener('load', () => {
       setLoading(false)
     })
-    //eslint-disable-next-line
-  }, [])
+  }, [isFirefox])
 
   useEffect(() => {
     aboutLink.current?.addEventListener('mouseenter', () => {
@@ -67,7 +68,8 @@ const Header = () => {
         fontFamily='futura-pt'
         fontSize={{ base: '1rem', md: '1.4rem', lg: '1.7rem' }}
         letterSpacing='1.2rem'
-        opacity='0.7'>
+        opacity='0.7'
+      >
         <Text as='h1' cursor='pointer' ref={aboutLink} onClick={toggleAbout}>
           {showAboutLink ? (showAbout ? 'STUDIO CONFLUX' : 'ABOUT') : '?'}
         </Text>
@@ -82,24 +84,29 @@ const Header = () => {
         justify='center'
         align='center'
         flexDirection='column'
-        transition='0.4s opacity linear'>
+        transition='0.4s opacity linear'
+      >
         <Box>
           <svg
             ref={svgRef}
+            onLoad={() => console.log('ffs')}
             className='animate-filter'
             width='100%'
             height='100%'
-            style={{ display: 'none' }}>
+            style={{ display: 'none' }}
+          >
             <defs>
               <filter id='wavy' filterUnits='userSpaceOnUse' x='0' y='0'>
                 <feTurbulence
                   id='wave-animation'
                   numOctaves='2'
                   seed='19'
-                  baseFrequency='0.02 0.0645034'></feTurbulence>
+                  baseFrequency='0.02 0.0645034'
+                ></feTurbulence>
                 <feDisplacementMap
                   scale={isLargerThan650 ? '12' : '6'}
-                  in='SourceGraphic'></feDisplacementMap>
+                  in='SourceGraphic'
+                ></feDisplacementMap>
               </filter>
               <animate
                 attributeName='baseFrequency'
@@ -107,7 +114,8 @@ const Header = () => {
                 dur='10s'
                 keyTimes='0;0.5;1'
                 values='0.2 0.04;0.2 0.07;0.2 0.04'
-                repeatCount='indefinite'></animate>
+                repeatCount='indefinite'
+              ></animate>
             </defs>
           </svg>
           {!showAbout && (
@@ -116,9 +124,10 @@ const Header = () => {
               as='h1'
               fontFamily='qigong'
               opacity='1'
-              filter="url('#wavy')"
+              filter={isFirefox ? 'none' : "url('#wavy')"}
               textAlign='center'
-              fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}>
+              fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}
+            >
               Studio
               <br />
               Conflux
@@ -131,7 +140,8 @@ const Header = () => {
               textAlign='center'
               fontFamily='futura-pt'
               fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-              opacity='0.7'>
+              opacity='0.7'
+            >
               Composition, Music Production and Sound Design
               <br />
               for Arts & Media
