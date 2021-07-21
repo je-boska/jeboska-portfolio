@@ -17,7 +17,7 @@ const FullscreenButton: React.FC<FullscreenButtonProps> = ({
       position='fixed'
       top='20px'
       left='20px'
-      zIndex='1'
+      zIndex='6'
       transition='0.2s opacity ease-in-out'
       onClick={() => toggleFullscreen()}
     >

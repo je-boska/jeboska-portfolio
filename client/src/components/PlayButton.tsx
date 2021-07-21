@@ -10,7 +10,8 @@ const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying, setIsPlaying }) => {
   return (
     <Box
       opacity='0'
-      _hover={{ opacity: 0.5 }}
+      zIndex='2'
+      _hover={{ opacity: isPlaying ? 0 : 0.5 }}
       color='white'
       position='absolute'
       width='100%'
