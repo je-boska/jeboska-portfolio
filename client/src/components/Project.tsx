@@ -3,8 +3,8 @@ import { ProjectType } from '../types'
 import { Box, useMediaQuery } from '@chakra-ui/react'
 import ProjectText from './ProjectText'
 import FullscreenButton from './FullscreenButton'
-// import { checkIfFirefox } from '../utils/checkIfFirefox'
 import { splitScroll } from '../effects/splitScroll'
+import PlayButton from './PlayButton'
 
 interface ProjectProps {
   project: ProjectType
@@ -16,7 +16,6 @@ type videoElement = HTMLVideoElement | null
 const Project: React.FC<ProjectProps> = ({ project, index }) => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
   const [isPlaying, setIsPlaying] = useState(false)
-  // const [isFirefox, setIsFirefox] = useState(false)
   const [video, setVideo] = useState<videoElement>(null)
 
   const { title, slug, body, videoUrl, poster } = project
@@ -70,10 +69,6 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
   }, [slug])
 
-  // useEffect(() => {
-  //   setIsFirefox(checkIfFirefox())
-  // }, [])
-
   useEffect(() => {
     isPlaying ? play() : pause()
     document.addEventListener('scroll', () => {
@@ -91,7 +86,8 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     <Box
       className={`.${slug}_project project-container`}
       flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height='50vh'>
+      height='50vh'
+    >
       <ProjectText
         first={index === 0 ? true : false}
         title={title}
@@ -105,25 +101,34 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
         height='80vh'
         margin='0 auto'
         className={`${slug}_video-container video-container`}
-        _hover={{
-          cursor: 'pointer',
-        }}>
-        {/* <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
-        {isLargerThan650 && (
-          <FullscreenButton
-            playing={isPlaying}
-            toggleFullscreen={toggleFullscreen}
-          />
-        )}
-        <video
-          style={{ height: '100%', margin: '0 auto' }}
-          className={`${slug}_video video`}
-          src={videoUrl}
-          poster={poster}
-          onClick={() => {
-            setIsPlaying(!isPlaying)
+      >
+        <Box
+          position='absolute'
+          transform='translate(-50%, -50%)'
+          top='50%'
+          left='50%'
+          width='100%'
+          _hover={{
+            cursor: 'pointer',
           }}
-        />
+        >
+          <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+          {isLargerThan650 && (
+            <FullscreenButton
+              playing={isPlaying}
+              toggleFullscreen={toggleFullscreen}
+            />
+          )}
+          <video
+            style={{ margin: '0 auto' }}
+            className={`${slug}_video video`}
+            src={videoUrl}
+            poster={poster}
+            onClick={() => {
+              setIsPlaying(!isPlaying)
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   )

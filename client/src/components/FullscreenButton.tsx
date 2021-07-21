@@ -14,12 +14,11 @@ const FullscreenButton: React.FC<FullscreenButtonProps> = ({
     <Box
       opacity={playing ? 0.5 : 0}
       color='white'
-      // position='absolute'
       position='fixed'
-      // top='20px'
-      // left='20px'
+      top='20px'
+      left='20px'
       zIndex='1'
-      transition='0.4s opacity ease-in-out'
+      transition='0.2s opacity ease-in-out'
       onClick={() => toggleFullscreen()}
     >
       <i style={{ fontSize: 20 }} className='fas fa-expand'></i>

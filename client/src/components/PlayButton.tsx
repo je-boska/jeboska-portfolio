@@ -9,15 +9,25 @@ interface PlayButtonProps {
 const PlayButton: React.FC<PlayButtonProps> = ({ isPlaying, setIsPlaying }) => {
   return (
     <Box
-      opacity={isPlaying ? 0 : 0.5}
+      opacity='0'
+      _hover={{ opacity: 0.5 }}
       color='white'
       position='absolute'
-      top='50%'
-      left='50%'
-      transform='translate(-50%, -50%)'
-      transition='0.4s opacity ease-in-out'
-      onClick={() => setIsPlaying(!isPlaying)}>
-      <i style={{ fontSize: 60 }} className='fas fa-play'></i>
+      width='100%'
+      height='100%'
+      transition='0.2s opacity ease-in-out'
+      onClick={() => setIsPlaying(!isPlaying)}
+    >
+      <i
+        style={{
+          fontSize: 60,
+          top: '50%',
+          left: '50%',
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)',
+        }}
+        className='fas fa-play'
+      ></i>
     </Box>
   )
 }
