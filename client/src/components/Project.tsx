@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { ProjectType } from '../types'
 import { Box, useMediaQuery } from '@chakra-ui/react'
 import ProjectText from './ProjectText'
-// import FullscreenButton from './FullscreenButton'
 import { splitScroll } from '../effects/splitScroll'
 import PlayButton from './PlayButton'
 
@@ -36,35 +35,6 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     videos.forEach(video => video.pause())
   }
 
-  // function moveVideoOutOfParent() {
-  //   video && document.body.appendChild(video)
-  // }
-
-  // function moveVideoBackInParent() {
-  //   const videoParent = document.querySelector(
-  //     `.${slug}_video-container`
-  //   ) as HTMLElement
-  //   video && videoParent.appendChild(video)
-  // }
-
-  // function toggleFullscreen() {
-  //   moveVideoOutOfParent()
-  //   if (video?.requestFullscreen) {
-  //     video.requestFullscreen()
-  //   }
-  // }
-
-  // function fullscreenListener() {
-  //   const state =
-  //     (document as any).fullScreen ||
-  //     (document as any).mozFullScreen ||
-  //     (document as any).webkitIsFullScreen
-
-  //   if (!state) {
-  //     moveVideoBackInParent()
-  //   }
-  // }
-
   useEffect(() => {
     setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
   }, [slug])
@@ -74,8 +44,6 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
     document.addEventListener('scroll', () => {
       video?.paused && setIsPlaying(false)
     })
-
-    // video?.addEventListener('fullscreenchange', fullscreenListener)
   })
 
   useEffect(() => {
@@ -102,12 +70,6 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
         margin='0 auto'
         className={`${slug}_video-container video-container`}
       >
-        {/* {isLargerThan650 && (
-          <FullscreenButton
-            playing={isPlaying}
-            toggleFullscreen={toggleFullscreen}
-          />
-        )} */}
         <Box
           position='absolute'
           transform='translate(-50%, -50%)'

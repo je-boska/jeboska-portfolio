@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Text, Box, Flex, Heading, useMediaQuery } from '@chakra-ui/react'
 import { useState } from 'react'
 import { checkIfFirefox } from '../utils/checkIfFirefox'
+import Contact from './Contact'
 
 const Header = () => {
   const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
@@ -134,18 +135,21 @@ const Header = () => {
             </Heading>
           )}
           {showAbout && (
-            <Text
-              className='studio-conflux-description'
-              pt={isLargerThan650 ? 6 : 2}
-              textAlign='center'
-              fontFamily='futura-pt'
-              fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-              opacity='0.7'
-            >
-              Composition, Music Production and Sound Design
-              <br />
-              for Arts & Media
-            </Text>
+            <>
+              {/* <Text
+                className='studio-conflux-description'
+                pt={isLargerThan650 ? 6 : 2}
+                textAlign='center'
+                fontFamily='futura-pt'
+                fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
+                opacity='0.7'
+              >
+                Composition, Music Production and Sound Design
+                <br />
+                for Arts & Media
+              </Text> */}
+              <Contact />
+            </>
           )}
         </Box>
       </Flex>
