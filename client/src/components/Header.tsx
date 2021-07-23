@@ -136,18 +136,6 @@ const Header = () => {
           )}
           {showAbout && (
             <>
-              {/* <Text
-                className='studio-conflux-description'
-                pt={isLargerThan650 ? 6 : 2}
-                textAlign='center'
-                fontFamily='futura-pt'
-                fontSize={{ base: '1rem', md: '1.2rem', lg: '1.5rem' }}
-                opacity='0.7'
-              >
-                Composition, Music Production and Sound Design
-                <br />
-                for Arts & Media
-              </Text> */}
               <Contact />
             </>
           )}
