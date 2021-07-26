@@ -27,27 +27,11 @@ const Header = () => {
   }, [isFirefox])
 
   useEffect(() => {
-    aboutLink.current?.addEventListener('mouseenter', () => {
-      setShowAboutLink(true)
-    })
-    aboutLink.current?.addEventListener('mouseleave', () => {
-      setShowAboutLink(false)
-    })
-    projectsLink.current?.addEventListener('mouseenter', () => {
-      setShowProjectsLink(true)
-    })
-    projectsLink.current?.addEventListener('mouseleave', () => {
-      setShowProjectsLink(false)
-    })
-    return () => {}
-  }, [])
-
-  useEffect(() => {
     setIsFirefox(checkIfFirefox())
   }, [])
 
   function toggleAbout() {
-    setShowAbout(!showAbout)
+    setShowAbout(showAbout => !showAbout)
   }
 
   function scrollDown() {
@@ -71,10 +55,28 @@ const Header = () => {
         letterSpacing='1.2rem'
         opacity='0.7'
       >
-        <Text as='h1' cursor='pointer' ref={aboutLink} onClick={toggleAbout}>
+        <Text
+          as='h1'
+          cursor='pointer'
+          ref={aboutLink}
+          onClick={toggleAbout}
+          onMouseEnter={() => setShowAboutLink(showAboutLink => !showAboutLink)}
+          onMouseLeave={() => setShowAboutLink(showAboutLink => !showAboutLink)}
+        >
           {showAboutLink ? (showAbout ? 'STUDIO CONFLUX' : 'ABOUT') : '?'}
         </Text>
-        <Text as='h1' cursor='pointer' ref={projectsLink} onClick={scrollDown}>
+        <Text
+          as='h1'
+          cursor='pointer'
+          ref={projectsLink}
+          onClick={scrollDown}
+          onMouseEnter={() =>
+            setShowProjectsLink(showProjectsLink => !showProjectsLink)
+          }
+          onMouseLeave={() =>
+            setShowProjectsLink(showProjectsLink => !showProjectsLink)
+          }
+        >
           {showProjectsLink ? 'PROJECTS' : 'P'}
         </Text>
       </Flex>

@@ -1,14 +1,11 @@
 import React from 'react'
-import { Flex, Text } from '@chakra-ui/layout'
+import { Box, Text } from '@chakra-ui/layout'
 
 const Contact = () => {
   return (
-    <div>
-      <Flex
+    <>
+      <Box
         m={8}
-        justify='center'
-        align='center'
-        height='100vh'
         opacity='0.8'
         fontSize={{ base: '1rem', md: '1.2rem', lg: '1.3rem' }}
       >
@@ -18,6 +15,10 @@ const Contact = () => {
           Boska.
           <br />
           <br />
+          Clients include Adidas, Acqua Di Parma, *Wallpaper Mag, and I don't
+          know what else but for sure lots of cool clients.
+          <br />
+          <br />
           Get in touch
           <br />
           hello@studioconflux.com
@@ -25,8 +26,8 @@ const Contact = () => {
           <br />
           Imprint
         </Text>
-      </Flex>
-    </div>
+      </Box>
+    </>
   )
 }
 
