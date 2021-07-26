@@ -127,6 +127,12 @@ const Header = () => {
               as='h1'
               fontFamily='qigong'
               opacity='1'
+              lineHeight='1.3'
+              textShadow={
+                isLargerThan650
+                  ? '20px 20px 20px rgba(255, 255, 255, 0.3)'
+                  : '10px 10px 10px rgba(255, 255, 255, 0.4)'
+              }
               filter={isFirefox ? 'none' : "url('#wavy')"}
               textAlign='center'
               fontSize={{ base: '1.5rem', md: '3rem', lg: '5rem' }}
