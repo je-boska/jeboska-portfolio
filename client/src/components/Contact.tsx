@@ -15,8 +15,8 @@ const Contact = () => {
           Boska.
           <br />
           <br />
-          Clients include Adidas, Acqua Di Parma, *Wallpaper Mag, and I don't
-          know what else but for sure lots of cool clients.
+          Clients include Adidas, Acqua Di Parma, *Wallpaper Mag, 032c,
+          Converse, SieMatics, Pop-Kultur, Forecast Festival.
           <br />
           <br />
           Get in touch
