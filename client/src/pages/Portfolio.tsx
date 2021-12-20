@@ -28,7 +28,7 @@ const Portfolio = () => {
           projects.map((project, index) => (
             <Project index={index} key={project._id} project={project} />
           ))}
-        <div style={{ height: 1600 }}></div>
+        <div style={{ height: 1200 }}></div>
       </div>
     </>
   )
