@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import { ProjectType } from '../types'
-import { Box, useMediaQuery } from '@chakra-ui/react'
-import ProjectText from './ProjectText'
-import { splitScroll } from '../effects/splitScroll'
-import PlayButton from './PlayButton'
+import React, { useEffect, useState } from "react";
+import { ProjectType } from "../types";
+import { Box, useMediaQuery } from "@chakra-ui/react";
+import ProjectText from "./ProjectText";
+import { scrollRotate } from "../effects/scrollRotate";
+import PlayButton from "./PlayButton";
 
 interface ProjectProps {
-  project: ProjectType
-  index: number
+  project: ProjectType;
+  index: number;
 }
 
-type videoElement = HTMLVideoElement | null
+type videoElement = HTMLVideoElement | null;
 
 const Project: React.FC<ProjectProps> = ({ project, index }) => {
-  const [isLargerThan650] = useMediaQuery('(min-width: 650px)')
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [video, setVideo] = useState<videoElement>(null)
+  const [isLargerThan650] = useMediaQuery("(min-width: 650px)");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [video, setVideo] = useState<videoElement>(null);
 
-  const { title, slug, body, videoUrl, poster } = project
+  const { title, slug, body, videoUrl, poster } = project;
 
   function play() {
-    pauseAll()
-    video?.play()
+    pauseAll();
+    video?.play();
   }
 
   function pause() {
-    video?.pause()
+    video?.pause();
   }
 
   function pauseAll() {
     const videos = document.querySelectorAll(
-      '.video'
-    )! as NodeListOf<HTMLVideoElement>
-    videos.forEach(video => video.pause())
+      ".video"
+    )! as NodeListOf<HTMLVideoElement>;
+    videos.forEach((video) => video.pause());
   }
 
   useEffect(() => {
-    setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement)
-  }, [slug])
+    setVideo(document.querySelector(`.${slug}_video`)! as HTMLVideoElement);
+  }, [slug]);
 
   useEffect(() => {
-    isPlaying ? play() : pause()
-    document.addEventListener('scroll', () => {
-      video?.paused && setIsPlaying(false)
-    })
-  })
+    isPlaying ? play() : pause();
+    document.addEventListener("scroll", () => {
+      video?.paused && setIsPlaying(false);
+    });
+  });
 
   useEffect(() => {
-    splitScroll(`.${slug}_video-container`)
-  }, [slug, isLargerThan650])
+    scrollRotate(`.${slug}_video-container`);
+  }, [slug, isLargerThan650]);
 
   return (
     <Box
       className={`.${slug}_project project-container`}
-      flexWrap={isLargerThan650 ? 'nowrap' : 'wrap'}
-      height='50vh'
+      flexWrap={isLargerThan650 ? "nowrap" : "wrap"}
+      height="50vh"
     >
       <ProjectText
         first={index === 0 ? true : false}
@@ -64,36 +64,36 @@ const Project: React.FC<ProjectProps> = ({ project, index }) => {
       />
 
       <Box
-        width={isLargerThan650 ? '80%' : '100%'}
-        position='relative'
-        height='80vh'
-        margin='0 auto'
+        width={isLargerThan650 ? "80%" : "100%"}
+        position="relative"
+        height="80vh"
+        margin="0 auto"
         className={`${slug}_video-container video-container`}
       >
         <Box
-          position='absolute'
-          transform='translate(-50%, -50%)'
-          top='50%'
-          left='50%'
-          width='100%'
+          position="absolute"
+          transform="translate(-50%, -50%)"
+          top="50%"
+          left="50%"
+          width="100%"
           _hover={{
-            cursor: 'pointer',
+            cursor: "pointer",
           }}
         >
           <PlayButton isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
           <video
-            style={{ margin: '0 auto', maxHeight: '80vh' }}
+            style={{ margin: "0 auto", maxHeight: "80vh" }}
             className={`${slug}_video video`}
             src={videoUrl}
             poster={poster}
             onClick={() => {
-              setIsPlaying(!isPlaying)
+              setIsPlaying(!isPlaying);
             }}
           />
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;
