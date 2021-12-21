@@ -9,12 +9,13 @@ html {
 
 .impressum p {
   margin-bottom: 1.2rem;
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.impressum h4 {
+.impressum strong {
   font-weight: bold;
   margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 1);
 }
 
 .impressum a {
