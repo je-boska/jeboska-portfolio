@@ -6,3 +6,17 @@ body {
 html {
   height: -webkit-fill-available;
 }
+
+.impressum p {
+  margin-bottom: 1.2rem;
+  opacity: 0.8;
+}
+
+.impressum h4 {
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.impressum a {
+  color: rgb(104, 127, 255);
+}

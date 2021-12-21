@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/layout";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -19,12 +20,21 @@ const Contact = () => {
           GQ Germany and *Wallpaper Magazine.
           <br />
           <br />
-          Get in touch
-          <br />
           philipp@studioconflux.com
           <br />
+          Instagram:{" "}
+          <Box display="inline" _hover={{ opacity: "0.8" }}>
+            <a href="https://www.instagram.com/studioconflux/">
+              @studioconflux
+            </a>
+          </Box>
           <br />
-          Imprint
+          <br />
+          <Box _hover={{ opacity: "0.8" }}>
+            <Link to="/imprint" target="_blank">
+              Imprint
+            </Link>
+          </Box>
         </Text>
       </Box>
     </>

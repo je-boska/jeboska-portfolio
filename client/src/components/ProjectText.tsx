@@ -1,5 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
+import BlockContent from "@sanity/block-content-to-react";
 
 interface ProjectTextProps {
   title: string;
@@ -68,6 +69,7 @@ const ProjectText: React.FC<ProjectTextProps> = ({
           >
             {title.toUpperCase()}
           </Heading>
+          <BlockContent blocks={body} />
         </Box>
       </Box>
     </>
