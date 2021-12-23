@@ -16,8 +16,8 @@ const Contact = () => {
           Boska.
           <br />
           <br />
-          Clients include Adidas, Converse, Tom Ford, Acqua Di Parma, Siematics,
-          GQ Germany and *Wallpaper Magazine.
+          Clients include Adidas, Converse, Tom Ford, Acqua Di Parma, Siematic,
+          032c, GQ Germany and *Wallpaper Magazine.
           <br />
           <br />
           philipp@studioconflux.com
